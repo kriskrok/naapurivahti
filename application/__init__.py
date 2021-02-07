@@ -1,17 +1,20 @@
 ### Behold all that will be initialized upon startup
-from os import getenv
-from dotenv import load_dotenv
+import os
 from flask import Flask
+from dotenv import load_dotenv
+
 app = Flask(__name__)
 
 load_dotenv() #TODO:// Find out why this is required to be invoked
 
 from flask_sqlalchemy import SQLAlchemy
 
-app.config["SQLALCHEMY_DATABASE_URI"] = getenv('DATABASE_URL')
-
-# Set SQLAlchemy to print all SQL-queries
-app.config["SQLALCHEMY_ECHO"] = True
+if os.environ.get('HEROKU'):
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('HEROKU_DATABASE_URL')
+else:
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URL')
+    # Set SQLAlchemy to print all SQL-queries
+    app.config["SQLALCHEMY_ECHO"] = True
 
 # db object for all our ORM needs
 db = SQLAlchemy(app)
