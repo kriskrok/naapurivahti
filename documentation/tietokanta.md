@@ -1,5 +1,5 @@
 ## Nykytilanne
-![tietokantakaavio](../application/static/kaavio.png)
+![tietokantakaavio](https://raw.githubusercontent.com/kriskrok/naapurivahti/main/static/kaavio.png)
 
 
 

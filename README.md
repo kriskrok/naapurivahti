@@ -3,7 +3,7 @@
 # Naapurivahti-sovellus avuksi taloon ja puutarhaan
 
 
-#### [Tietokannan rakenne](./documentation/tietokanta.md)
+#### [Tietokantakuvaus](./documentation/tietokanta.md)
 #### [Sovellus Herokussa](https://naapurivahti.herokuapp.com/)
 
 ## Tilannetietoa
