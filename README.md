@@ -2,6 +2,16 @@
 
 # Naapurivahti-sovellus avuksi taloon ja puutarhaan
 
+
+#### [Tietokannan rakenne](./documentation/tietokanta.md)
+#### [Sovellus Herokussa](https://naapurivahti.herokuapp.com/)
+
+## Tilannetietoa
+
+Sovelluksesta on toteutettuna tällä hetkellä etusivun navigointinäkymässä listatut näkymät. Sovelluksessa on mahdollista luoda uusia vahtivuoroja jotka tallentuvat tietokantaan. Kaikki tietokantaan tallennetut vahtivuorot näkyvät käyttäjälle vuorolistaus näkymässä (etusivu -> vuorot -> vuorolistaus).
+
+Muuta toiminnallisuutta ei ole vielä toteutettu, erityisesti siis sovelluksessa ei ole vielä kirjautumismahdollisuutta. Tämän seurauksena kaikki toteutetut näkymät ovat avoimesti nähtävillä.
+
 ## Aihekuvaus
 
 Naapurivahti&#8480;-sovellus auttaa pitämään kirjaa taloyhtiössä tapahtuvista sattumuksista. Sovellus auttaa myös organisoimaan taloyhtiön sisäistä Naapuripartio&#8480;-toimintaa. Sovellukseen voi kirjata ja myöhemmin tarkastella havaittuja tapahtumia ja ilmiöitä.
@@ -9,7 +19,6 @@ Naapurivahti&#8480;-sovellus auttaa pitämään kirjaa taloyhtiössä tapahtuvis
 Sovellus auttaa pitämään kirjaa sekä organisoimaan taloyhtiön naapuripartio-toimintaa. Sovellukseen voi kirjata havaintoja partioinnin aikana kohdatuista tapahtumista sekä ilmiöistä.
 
 Taloyhtiön asukkaat jaetaan kahteen kastiin, taloyhtiön hallituksen jäseniin ja riviasukkaisiin. Hallituksen jäsenet voivat toimia sovelluksessa Suurmartan (ylläpitäjän) roolissa
-
 
 ## Toiminnallisuudet
 
