@@ -50,8 +50,17 @@
                 </a>
                   <div class="uk-navbar-dropdown">
                       <ul class="uk-nav uk-navbar-dropdown-nav">
+                          {% if current_user.is_authenticated %}
                           <li class="uk-active"><a href="{{ url_for('profile') }}">Omat tiedot</a></li>
-                          <li><del>Kirjaudu ulos</del></li>
+                          {% else %}
+                          <li><del>Omat tiedot</del></li>
+                          {% endif %}
+                          {% if current_user.is_authenticated %}
+                          <li class="uk-active"><a href="{{ url_for('authenticate_logout') }}">Kirjaudu ulos</a></li>
+                          {% else %}
+                          <li class="uk-active"><a href="{{ url_for('authenticate_login') }}">Kirjaudu sisään</a></li>
+                          {% endif %}
+
                       </ul>
                   </div>
               </li>

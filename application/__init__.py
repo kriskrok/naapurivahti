@@ -1,6 +1,7 @@
 ### Behold all that will be initialized upon startup
 import os
 from flask import Flask
+from flask_login import LoginManager, login_manager
 from dotenv import load_dotenv
 
 app = Flask(__name__)
@@ -16,6 +17,8 @@ else:
     # Set SQLAlchemy to print all SQL-queries
     app.config["SQLALCHEMY_ECHO"] = True
 
+app.config["SECRET_KEY"] = os.getenv('SESSION_KEY')
+
 # db object for all our ORM needs
 db = SQLAlchemy(app)
 
@@ -30,6 +33,19 @@ from application.report import views
 
 from application.shift import models
 from application.shift import views
+
+# Login functionality
+from application.auth.models import Account
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+login_manager.login_view = 'authenticate_login'
+login_manager.login_message = 'Olokkee hyvä ja enstöiksenne kirjautukkee sissää'
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Account.query.get(user_id)
+
 
 try:
     pass
