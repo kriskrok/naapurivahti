@@ -12,12 +12,12 @@ from flask_sqlalchemy import SQLAlchemy
 
 if os.environ.get('HEROKU'):
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('HEROKU_DATABASE_URL')
+    app.config["SECRET_KEY"] = os.getenv('HEROKU_SECRET_KEY')
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URL')
     # Set SQLAlchemy to print all SQL-queries
     app.config["SQLALCHEMY_ECHO"] = True
-
-app.config["SECRET_KEY"] = os.getenv('SESSION_KEY')
+    app.config["SECRET_KEY"] = os.getenv('SESSION_KEY')
 
 # db object for all our ORM needs
 db = SQLAlchemy(app)
