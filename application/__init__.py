@@ -1,5 +1,5 @@
 ### Behold all that will be initialized upon startup
-import os
+import os, logging, sys
 from flask import Flask
 from flask_login import LoginManager, login_manager
 from dotenv import load_dotenv
