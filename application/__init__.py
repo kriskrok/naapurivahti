@@ -11,8 +11,8 @@ load_dotenv() #TODO:// Find out why this is required to be invoked
 from flask_sqlalchemy import SQLAlchemy
 
 if os.environ.get('HEROKU'):
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('HEROKU_DATABASE_URL')
-    app.config["SECRET_KEY"] = os.getenv('HEROKU_SECRET_KEY')
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URL')
+    app.config["SECRET_KEY"] = os.urandom(32)
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URL')
     # Set SQLAlchemy to print all SQL-queries
