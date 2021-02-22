@@ -8,9 +8,19 @@
 
 ## Tilannetietoa
 
-Sovelluksesta on toteutettuna tällä hetkellä etusivun navigointinäkymässä listatut näkymät. Sovelluksessa on mahdollista luoda uusia vahtivuoroja jotka tallentuvat tietokantaan. Kaikki tietokantaan tallennetut vahtivuorot näkyvät käyttäjälle vuorolistaus näkymässä (etusivu -> vuorot -> vuorolistaus).
+Sovelluksesta on toteutettuna tällä hetkellä etusivun navigointinäkymässä listatut näkymät pl. Omat tiedot näkymä. Sovelluksessa on mahdollista luoda uusia vahtivuoroja jotka tallentuvat tietokantaan. Kaikki tietokantaan tallennetut vahtivuorot näkyvät käyttäjälle vuorolistaus näkymässä (etusivu -> vuorot -> vuorolistaus).
 
-Muuta toiminnallisuutta ei ole vielä toteutettu, erityisesti siis sovelluksessa ei ole vielä kirjautumismahdollisuutta. Tämän seurauksena kaikki toteutetut näkymät ovat avoimesti nähtävillä.
+Sovellukseen on toteutettu kirjautumismahdollisuus. Kirjautumattomalle käyttäjälle näytetään ainoastaan sovelluksen etusivu. Navigointi muualla sovelluksessa ohjaa kirjautumattoman käyttäjän kirjautumissivulle.
+
+Sovellukseen ei ole vielä toteutettu mahdollisuutta luoda käyttäjätunnuksia. Sovellusta voi tästä huolimatta koestaa testitunnuksilla:
+
+- Tunnus: ```Maija```
+- Salasana: ```sateenkaarikala```
+
+Sovellukseen on toteutettu yksi laajempi yhteenvetokysely jota hyödynnetään raporttilistausnäkymässä
+(etusivu -> raportit -> listaa raportit). Raportteja ei ole mahdollista vielä luoda sovelluksen käyttöliittymän kautta. Raportteja voi kuitenkin luoda sovelluksessa luomalla uusia vuoroja, sillä kaikille sovellukseen lisätyille vuorolle luodaan automaagisesti vuoroon liittyvä raportti. Näiden raporttien ilmiintymistä pääsee niin halutessaanihastelemaan edellä mainitussa raporttilistausnäkymässä.
+
+Tietokantakuvauksen mukaisista tauluista on tehty ORM-toteutukset. Näitä ei vielä kaikin osin tosin ole otettu sovelluksessa käyttöön. Luodut toteutukset löytyvät vastuualueittain jaoteltuna omissa kansioissaan. Esimerkiksi, käyttäjää kuvaavan Accounts-toteutuksen voi kaivella ihmeteltäväksi navigoimalla repositoriossa -> application/auth/models.py
 
 ## Aihekuvaus
 

@@ -1,9 +1,10 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from application import app, db
 from application.shift.models import Guardshift
 from application.shift.forms import ShiftForm
+from application.report.models import Report
 
 @app.route('/shifts/list')
 @login_required
@@ -25,9 +26,14 @@ def shift_create():
     date = form.date.data
     start = form.start_time.data
     end = form.end_time.data
-    shift = Guardshift(comment, date, start, end)
+    new_shift = Guardshift(comment, date, start, end)
 
-    db.session().add(shift)
+    db.session().add(new_shift)
+    db.session().commit()
+
+    #automagically conjure a blank report upon shift creation
+    report = Report(new_shift.shift_id, current_user.user_id)
+    db.session().add(report)
     db.session().commit()
 
     return redirect( url_for('list_shifts') )

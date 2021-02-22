@@ -2,7 +2,7 @@
 from application import db
 # from sqlalchemy import Table
 
-shiftmembers = db.Table('shiftMembers',
+shiftmembers = db.Table('shiftmembers',
                 db.Column('member_id', db.Integer, db.ForeignKey('account.user_id'), nullable=False),   #Account.user_id
                 db.Column('shift_id', db.Integer, db.ForeignKey('guardshift.shift_id'), nullable=False)) #Guardshift.id
 
