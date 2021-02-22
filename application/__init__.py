@@ -11,12 +11,15 @@ load_dotenv() #TODO:// Find out why this is required to be invoked
 from flask_sqlalchemy import SQLAlchemy
 
 if os.environ.get('HEROKU'):
+    print('HEROKU enviroment variable found: ', type(os.environ.get('HEROKU'), os.environ.get('HEROKU')))
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URL')
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URL')
     # Set SQLAlchemy to print all SQL-queries
     app.config["SQLALCHEMY_ECHO"] = True
-    #app.config["SECRET_KEY"] = os.getenv('SESSION_KEY')
+
+app.config["SECRET_KEY"] = os.getenv('SESSION_KEY')
+print('Todays session lottery is won by:', os.environ.get('SESSION_KEY'))
 
 # db object for all our ORM needs
 db = SQLAlchemy(app)
@@ -35,8 +38,8 @@ from application.shift import views
 
 # Login functionality
 from application.auth.models import Account
-from os import urandom
-app.config["SECRET_KEY"] = urandom(32)
+#from os import urandom
+#app.config["SECRET_KEY"] = urandom(32)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
