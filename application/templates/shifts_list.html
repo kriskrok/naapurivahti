@@ -25,13 +25,13 @@
           </thead>
           <tbody>
             {% for shift in shifts %}
-            <tr>
-              <td>{{ shift.comment }}</td>
-              <td>{{ shift.date }}</td>
-              <td>{{ shift.start_time }}</td>
-              <td>{{ shift.end_time }}</td>
-            </tr>
-          {% endfor %}
+              <tr>
+                <td>{{ shift.comment }}</td>
+                <td>{{ shift.date }}</td>
+                <td>{{ shift.start_time }}</td>
+                <td>{{ shift.end_time }}</td>
+              </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
