@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 if os.environ.get('HEROKU'):
     print('HEROKU enviroment variable found: ', os.environ.get('HEROKU'))
-    app.config.from_object('config.HerokuConfig')
+    app.config.from_object('application.config.HerokuConfig')
 else:
     print('Could not find HEROKU enviroment variable')
     app.config.from_object('application.config.DevConfig')
