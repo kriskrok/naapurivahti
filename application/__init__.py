@@ -12,9 +12,8 @@ app = Flask(__name__)
 
 if os.environ.get('HEROKU'):
     print('HEROKU enviroment variable found: ', os.environ.get('HEROKU'))
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
-    SECRET_KEY = os.getenv('SESSION_KEY')
-    print('Test_DB_URI set as ', os.getenv('DATABASE_URL'))
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+    app.config['SECRET_KEY'] = os.getenv('SESSION_KEY')
 
 	### Remove these as end draws near
     SQLALCHEMY_ECHO = True	# Set SQLAlchemy to print all SQL-queries
