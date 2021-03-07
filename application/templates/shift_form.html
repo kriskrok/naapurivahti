@@ -4,12 +4,36 @@
   <div class="uk-container">
     <form method="POST" action="{{ url_for('shift_create') }}">
       <table>
+        {% for field in shiftform %}
+        <tr>
+          <td>{{ field.label }}</td>
+          <td>{{ field }}</td>
+          {% if field.errors %}
+          <td>
+            <ul>
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+        <!--
+        <tr><td>Hei äiti!</td></tr>
         <tr>
           <td>
             {{ shiftform.comment.label }}
           </td>
           <td>
             {{ shiftform.comment }}
+          </td>
+          <td>
+            <ul>
+              {% for error in shiftform.comment.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
           </td>
         </tr>
         <tr>
@@ -18,6 +42,13 @@
           </td>
           <td>
             {{ shiftform.date }}
+          </td>
+          <td>
+            <ul>
+              {% for error in shiftform.date.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
           </td>
         </tr>
         <tr>
@@ -36,6 +67,7 @@
             {{ shiftform.end_time }}
           </td>
         </tr>
+        -->
         <tr>
           <td colspan="2">
             <input type="submit" value="Luo vuoro"/>

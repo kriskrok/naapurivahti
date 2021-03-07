@@ -22,6 +22,10 @@ def open_shiftform():
 @login_required
 def shift_create():
     form = ShiftForm(request.form)
+
+    if not form.validate():
+        return render_template('shift_form.html', shiftform = form)
+
     comment = form.comment.data
     date = form.date.data
     start = form.start_time.data

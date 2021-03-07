@@ -53,7 +53,7 @@
                           {% if current_user.is_authenticated %}
                           <li class="uk-active"><a href="{{ url_for('profile') }}">Omat tiedot</a></li>
                           {% else %}
-                          <li><del>Omat tiedot</del></li>
+                          <li class="uk-active"><a href="{{ url_for('open_signupform') }}">Luo tili</a></li>
                           {% endif %}
                           {% if current_user.is_authenticated %}
                           <li class="uk-active"><a href="{{ url_for('authenticate_logout') }}">Kirjaudu ulos</a></li>

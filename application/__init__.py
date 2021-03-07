@@ -2,18 +2,22 @@
 
 import os, logging, sys
 from flask import Flask
+from flask.helpers import url_for
 from flask_login import LoginManager, login_manager
-from dotenv import load_dotenv
 
 from flask_sqlalchemy import SQLAlchemy
-
-load_dotenv() 
+from werkzeug.utils import redirect
 
 app = Flask(__name__)
 
 if os.environ.get('HEROKU'):
     print('HEROKU enviroment variable found: ', os.environ.get('HEROKU'))
-    app.config.from_object('application.config.HerokuConfig')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SECRET_KEY = os.environ.get('SESSION_KEY')
+
+	### Remove these as end draws near
+    SQLALCHEMY_ECHO = True	# Set SQLAlchemy to print all SQL-queries
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 else:
     print('Could not find HEROKU enviroment variable')
     app.config.from_object('application.config.DevConfig')
@@ -51,6 +55,9 @@ login_manager.login_message = 'Olokkee hyvä ja enstöiksenne kirjautukkee siss�
 def load_user(user_id):
     return Account.query.get(user_id)
 
+@login_manager.unauthorized_handler
+def unauthorized():
+    return redirect(url_for('index'))
 
 try:
     db.create_all()

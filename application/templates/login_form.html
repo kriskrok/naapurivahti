@@ -2,8 +2,8 @@
 
 {% block body %}
   <div class="uk-container">
-    <p>{{ error }}</p>
     <p>Olokkee hyvä ja enstöiksenne kirjautukkee sissee.</p>
+    <p>{{ error }}</p>
     <form method="POST" action="{{ url_for('authenticate_login') }}">
       <table>
         <tr>

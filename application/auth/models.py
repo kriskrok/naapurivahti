@@ -1,4 +1,5 @@
 from application import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class Account(db.Model):
 	user_id = db.Column(db.Integer, primary_key=True)
@@ -9,10 +10,9 @@ class Account(db.Model):
 	created_on = db.Column(db.DateTime(timezone=False), default=db.func.current_timestamp(), nullable=False)
 	last_login = db.Column(db.DateTime(timezone=False), onupdate=db.func.current_timestamp())
 
-	def __init__(self, email, username, password) -> None:
+	def __init__(self, email, username) -> None:
 		self.email = email
-		self.username
-		self.password = password
+		self.username = username
 		self.role = 1
 
 	def get_id(self):
@@ -26,3 +26,10 @@ class Account(db.Model):
 
 	def is_authenticated(self):
 		return True
+
+	def set_password(self, password):
+		self.password = generate_password_hash(password, method='sha256', salt_length=16)
+
+	def check_password(self, password):
+		"""Be mindfull that this eats hashes in the following form: method$salt$hash"""
+		return check_password_hash(self.password, password)
