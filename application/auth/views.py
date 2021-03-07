@@ -1,4 +1,3 @@
-from logging import log
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, current_user
 from flask_login.utils import login_required, logout_user

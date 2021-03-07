@@ -13,17 +13,19 @@
     <div class="uk-grid">
       <div class="uk-width-2-3">
         <h1>Raporttilistaus</h1>
-        <table class="uk-table uk-table-striped uk-table-hover uk-table-middle uk-table-divider">
+        <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
           <thead>
             <tr>
               <th>Vuoroesimartta</th>
-              <th>Kommentit</th>
+              <th class="uk-table-expand">Kommentit</th>
               <th>Päivämäärä</th>
               <th>Vuoro alkoi</th>
               <th>Vuoro päättyi</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
+
             {% for report in reports %}
             <tr>
               <td>{{ report.username }}</td>
@@ -31,6 +33,9 @@
               <td>{{ report.date }}</td>
               <td>{{ report.start_time }}</td>
               <td>{{ report.end_time }}</td>
+              <td class="uk-table-link">
+                <a class="uk-link-heading" href="{{ url_for('list_report', report_id=report.id) }}">&#128065;</a>
+              </td>
             </tr>
           {% endfor %}
           </tbody>

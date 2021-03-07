@@ -43,6 +43,9 @@ from application.report import views
 from application.shift import models
 from application.shift import views
 
+from application.observation import models
+from application.observation import views
+
 # Login functionality
 from application.auth.models import Account
 login_manager = LoginManager()

@@ -14,7 +14,7 @@ class Report(db.Model):
     
 	@staticmethod
 	def get_reportlisting():
-		stmt = text('SELECT account.username, report.comments, '
+		stmt = text('SELECT account.username, report.report_id, report.comments, '
 		+ 'guardshift.date, guardshift.start_time, guardshift.end_time '
 		+ 'FROM report, guardshift, account '
 		+ 'WHERE account.user_id = report.creator_id '
@@ -26,7 +26,7 @@ class Report(db.Model):
 		response = []
 		for row in res:
 			response.append(
-				{'username':row[0], 'comments':row[1], 'date':row[2], 'start_time':row[3], 'end_time':row[4]
+				{'username':row[0], 'id':row[1], 'comments':row[2], 'date':row[3], 'start_time':row[4], 'end_time':row[5]
 			})
 
 		return response

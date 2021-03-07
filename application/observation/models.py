@@ -8,7 +8,11 @@ class Observation(db.Model):
     comment = db.Column(db.Text)
     requires_action = db.Column(db.Boolean, default=False)
 
-    def __init__(self, report, author, timing) -> None:
+    def __init__(self, report=None, timing=None, comment=None, action=False) -> None:
         self.report_id = report
-        self.author_id = author
         self.timing = timing
+        self.comment = comment
+        self.requires_action = action
+    
+    def set_author(self, author_id):
+        self.author_id = author_id
