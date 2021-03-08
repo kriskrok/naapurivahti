@@ -11,7 +11,7 @@
 ---
 
 ### Sovellus Herokussa
-Herokun käyttämää Gunicorn-palvelinta ei käytetä paikallisessa asennuksessa ja tämän johdosta sitä ei ole listattuna requirements.txt tiedostossa. Herokun käynnistystä pääsee tarvittaessa sörkkimään muokkaamalla projektin juuresta löytyvää '[Procfile](https://github.com/kriskrok/naapurivahti/blob/main/Procfile)'-tiedostoa. 
+Herokun käyttämää Gunicorn-palvelinta ei käytetä paikallisessa asennuksessa, ainoastaan Herokussa. Herokun käynnistystä pääsee tarvittaessa sörkkimään muokkaamalla projektin juuresta löytyvää '[Procfile](https://github.com/kriskrok/naapurivahti/blob/main/Procfile)'-tiedostoa. 
 
 Herokun [komentorivityökalu](https://devcenter.heroku.com/articles/heroku-cli#getting-started) mahdollistaa sovelluksen tuoreimpien muutosten päivittämisen Herokuun vaivattomasti. Asenna tämä tarvittaessa edellä olevan linkin takaa löytyvien ohjeiden mukaisesti.
 
