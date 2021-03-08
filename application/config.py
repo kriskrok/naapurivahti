@@ -13,9 +13,8 @@ class Config:
 
 class HerokuConfig(Config):	
 	SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL')
-	### Remove these as end draws near
-	SQLALCHEMY_ECHO = True	# Set SQLAlchemy to print all SQL-queries
-	SQLALCHEMY_TRACK_MODIFICATIONS = True
+	SQLALCHEMY_ECHO = False
+	SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class LocalProdConfig(Config):
 	"""Prod is ran on Gunicorn, but can't hurt to roleplay production
@@ -31,5 +30,5 @@ class DevConfig(Config):
 	DEBUG = True
 	TESTING = True			#Propagates exceptions
 	SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URI')
-	SQLALCHEMY_ECHO = True	# Set SQLAlchemy to print all SQL-queries
+	SQLALCHEMY_ECHO = True
 	SQLALCHEMY_TRACK_MODIFICATIONS = True

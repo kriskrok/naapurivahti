@@ -10,16 +10,3 @@ class CreateObservationForm(FlaskForm):
 
     class Meta:
         csrf = False
-
-#    CREATE TABLE [IF NOT EXISTS] Observation {
-#  observation_id SERIAL PRIMARY KEY,
-#  report_id INT,
-#  author_id INT,
-#  timing TIMESTAMPZ,
-#  comment TEXT,
-#  requires_action BOOLEAN,
-# FOREIGN KEY (report_id)
-#     REFERENCES Report (report_id),
-#  FOREIGN KEY (author_id)
-#      REFERENCES Account (user_id)
-#};

@@ -1,4 +1,5 @@
 from application import db
+from sqlalchemy.sql import text
 
 class Observation(db.Model):
     observation_id = db.Column(db.Integer, primary_key=True)
@@ -16,3 +17,20 @@ class Observation(db.Model):
     
     def set_author(self, author_id):
         self.author_id = author_id
+
+    @staticmethod
+    def get_observationlisting():
+
+            stmt = text('SELECT observation.timing, observation.comment, '
+            + 'observation.requires_action, account.username FROM observation, account '
+            + 'WHERE account.user_id = observation.author_id ORDER BY observation.timing')
+
+            res = db.engine.execute(stmt)
+
+            response = []
+            for row in res:
+
+                response.append({'timing':row[0], 'comment':row[1],
+                                'requires_action':row[2], 'username':row[3]})
+
+            return response

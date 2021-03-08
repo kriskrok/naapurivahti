@@ -27,6 +27,9 @@ class Account(db.Model):
 	def is_authenticated(self):
 		return True
 
+	def is_suurmartta(self):
+		return self.role == 42
+
 	def set_password(self, password):
 		self.password = generate_password_hash(password, method='sha256', salt_length=16)
 

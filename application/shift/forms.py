@@ -5,7 +5,7 @@ from wtforms.fields.html5 import DateField, TimeField
 
 
 class ShiftForm(FlaskForm):
-    comment = StringField('Ohjeita ja varustus', [Length(min=2)])
+    comment = StringField('Ohjeita ja varustus', [Length(min=2, message='Ohjeistathan vuoroon lähtijät')])
     date = DateField('Pvm', [Required()], format = '%Y-%m-%d')
     start_time = TimeField('Aloitus', [Required()] ,format = '%H:%M')
     end_time = TimeField('Lopetus', [Required()], format = '%H:%M')

@@ -2,27 +2,6 @@
 
 {% block body %}
   <div class="uk-container">
-    <!--
-    <form method="POST" action="{{ url_for('authenticate_signup') }}">
-        <table>
-          {% for field in userform %}
-          <tr>
-            <td>{{ field.label }}</td>
-            <td>{{ field }}</td>
-            {% if field.errors %}
-            <td>
-              <ul>
-                {% for error in field.errors %}
-                  <li>{{ error }}</li>
-                {% endfor %}
-              </ul>
-            </td>
-            {% endif %}
-          </tr>
-          {% endfor %}
-        </table>
-      </form> -->
-
     <p>Olokkee hyvä ja täyttäkkee.</p>
     <p>{{ error }}</p>
     <form method="POST" action="{{ url_for('save_observation', report_id=report_id, observation_id=observation_id) }}">
@@ -32,7 +11,7 @@
             {{ observationform.comment.label }}
           </td>
           <td>
-            {{ observationform.comment(rows='3', cols='35') }}
+            {{ observationform.comment(rows='3', cols='40') }}
           </td>
         </tr>
         <tr>
@@ -63,7 +42,6 @@
       <div class="uk-width-2-3">
           <a href="{{ url_for('list_report', report_id=report_id) }}" class="uk-button uk-button-primary">Palaa</a>
       </div>
-    </div> <!-- grid -->
-
-  </div> <!-- container -->
+    </div>
+  </div>
 {% endblock %}

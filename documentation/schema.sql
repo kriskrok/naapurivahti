@@ -13,6 +13,7 @@ CREATE TABLE [IF NOT EXISTS] Account {
 
 CREATE TABLE [IF NOT EXISTS] Guardshift {
   shift_id SERIAL PRIMARY KEY,
+  comment TEXT,
   date DATE NOT NULL,
   start_time TIMESTAMPZ,
   end_time TIMESTAMPZ
@@ -25,7 +26,7 @@ CREATE TABLE [IF NOT EXISTS] Report {
   comments TEXT,
   finished BOOLEAN,
   FOREIGN KEY (shift_id)
-      REFERENCES Guardshift (shift_id),
+      REFERENCES Guardshift (shift_id) ON DELETE CASCADE,
   FOREIGN KEY (creator_id)
       REFERENCES Account (user_id)
 };
@@ -60,7 +61,7 @@ CREATE TABLE [IF NOT EXISTS] shiftMembers {
   member_id INT NOT NULL,
   shift_id INT NOT NULL,
   FOREIGN KEY (member_id)
-      REFERENCES Account (user_id),
+      REFERENCES Account (user_id) ON DELETE CASCADE,
   FOREIGN KEY (shift_id)
-      REFERENCES Guardshift (shift_id)
+      REFERENCES Guardshift (shift_id) ON DELETE CASCADE
 };

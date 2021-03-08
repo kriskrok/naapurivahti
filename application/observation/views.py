@@ -11,7 +11,7 @@ def open_observationform():
     observation_id = request.args.get('observation_id')
     form = CreateObservationForm()
 
-    if observation_id: #True if we're updating 
+    if observation_id:
         observation = Observation.query.get(observation_id)
 
         form.comment.data = observation.comment
@@ -30,14 +30,12 @@ def save_observation():
     report_id =  request.args.get('report_id')
     observation_id =  request.args.get('observation_id')
 
-    print('\n\n\nHeippa täältä uudesta havainnosta!', observation_id, report_id, '\n\n\n')
-
     if not form.validate():
         return render_template('observation_form.html',  observationform = form, report_id=report_id, observation_id = observation_id)
 
-    if observation_id: #True if we're updating
+    if observation_id:  #True if we're updating
         new_observation = Observation.query.get(observation_id)
-    else: #True if we're creating new
+    else:               #True if it's brand spanking new
         new_observation = Observation(report=report_id, timing=form.timing.data,
                             comment=form.comment.data, action=form.requires_action.data)
         new_observation.set_author(current_user.get_id())
@@ -59,6 +57,5 @@ def remove_observation(observation_id):
     if observation_to_remove:
         db.session().delete(observation_to_remove)
         db.session().commit()
-        print('Terminated, rejoice!\n')
 
     return redirect(url_for('list_report', report_id=request.args.get('report_id')))

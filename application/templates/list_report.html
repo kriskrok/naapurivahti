@@ -4,9 +4,7 @@
   <div class="uk-container">
     <div class="uk-grid">
       <div class="uk-width-2-3">
-        <p>
-          <strong>Work in progress</strong> - <em> olen keskeneräinen</em>
-        </p>
+        <p>&nbsp;</p>
       </div>
     </div>
 
@@ -19,7 +17,6 @@
           <a href="{{ url_for('reports_list') }}" class="uk-button uk-button-primary">Palaa</a>
       </div>
 
-
       <table class="uk-table uk-table-striped uk-table-hover uk-table-middle uk-table-divider">
         <thead>
           <tr>
@@ -30,29 +27,28 @@
           </tr>
         </thead>
         <tbody>
-          {% for observation in observations %}
+          {% for item in observations %}
             <tr>
-              <td>{{ observation.timing.strftime('%H:%m') }}</td>
-              <td>{{ observation.comment }}</td>
-              {% if observation.requires_action %}
+              <td>{{ item[0].timing.strftime('%H:%m') }}</td>
+              <td>{{ item[0].comment }}</td>
+              {% if item[0].requires_action %}
                 <td>&check;</td>
               {% else %}
                 <td>&horbar;</td>
               {% endif%}
-              <td>{{ observation.author_id }}</td>
+              <td>{{ item[1].username }}</td>
               <td class="uk-table-link">
-                <a class=uk-link-reset href="{{ url_for('open_observationform', observation_id = observation.observation_id, report_id=report_id) }}">&#128065;
+                <a class=uk-link-reset href="{{ url_for('open_observationform', observation_id = item[0].observation_id, report_id=report_id) }}">&#128065;
                 </a>
               </td>
               <td class="uk-table-link">
-                <a class=uk-link-reset href="{{ url_for('remove_observation', observation_id = observation.observation_id, report_id=report_id) }}">&#128465;
+                <a class=uk-link-reset href="{{ url_for('remove_observation', observation_id = item[0].observation_id, report_id=report_id) }}">&#128465;
                 </a>
               </td>
             </tr>
-          {% endfor %}
+          {% endfor%}          
         </tbody>
       </table>
-
     </div>
 
   </div>
