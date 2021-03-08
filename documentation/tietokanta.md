@@ -1,7 +1,9 @@
+# Tietokantakaavio
+
+Tietokannan toteutus pyrkii noudattamaan aihekuvauksesta löytyviä relaatioita parhaalla mahdollisella tavalla.
+
 ## Nykytilanne
 ![tietokantakaavio](https://raw.githubusercontent.com/kriskrok/naapurivahti/main/static/kaavio.png)
-
-
 
 ### Luontiloitsut
 #### Account - rekisteröityneet käyttäjät

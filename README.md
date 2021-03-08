@@ -5,22 +5,25 @@
 
 #### [Tietokantakuvaus](./documentation/tietokanta.md)
 #### [Sovellus Herokussa](https://naapurivahti.herokuapp.com/)
+#### [Käyttöönotto](https://github.com/kriskrok/naapurivahti/blob/main/documentation/kayttoonotto.md)
+#### [Käyttötapaukset](https://github.com/kriskrok/naapurivahti/blob/main/documentation/kayttotapaukset.md)
 
-## Tilannetietoa
+## Sovellus taloyhtiön sisäisten vahtivuorojen organisointiin ja kirjaamiseen
 
-Sovelluksesta on toteutettuna tällä hetkellä etusivun navigointinäkymässä listatut näkymät pl. Omat tiedot näkymä. Sovelluksessa on mahdollista luoda uusia vahtivuoroja jotka tallentuvat tietokantaan. Kaikki tietokantaan tallennetut vahtivuorot näkyvät käyttäjälle vuorolistaus näkymässä (etusivu -> vuorot -> vuorolistaus).
+Sovelluksesta on toteutettuna tällä hetkellä etusivun navigointinäkymässä listatut näkymät pl. Omat tiedot -näkymä. Sovellukseen toteutettu toiminnallisuus on kuvattu tarkemmin käyttötapauksina [täällä](https://github.com/kriskrok/naapurivahti/blob/main/documentation/kayttotapaukset.md). 
 
 Sovellukseen on toteutettu kirjautumismahdollisuus. Kirjautumattomalle käyttäjälle näytetään ainoastaan sovelluksen etusivu. Navigointi muualla sovelluksessa ohjaa kirjautumattoman käyttäjän kirjautumissivulle.
 
-Sovellukseen ei ole vielä toteutettu mahdollisuutta luoda käyttäjätunnuksia. Sovellusta voi tästä huolimatta koestaa testitunnuksilla:
+Sovelluksen kautta on mahdollista luoda käyttäjätunnus. Sovelluksen kaikkien käyttäjien salasanoista tallennetaan ainoastaan hash-arvo. Unohtunutta salasanaa ei siis voida mahdollisten unohdusten sattuessa palauttamaan vaan käyttäjän tulee tällöin luoda uusi tunnus.
+
+
+Sovellukseen ei ole vielä toteutettu mahdollisuutta luoda uusia admin-käyttäjätunnuksia. Sovellusta voi tästä huolimatta ihastella seuraavilla admin-testitunnuksilla:
 
 - Tunnus: ```Maija```
 - Salasana: ```sateenkaarikala```
 
-Sovellukseen on toteutettu yksi laajempi yhteenvetokysely jota hyödynnetään raporttilistausnäkymässä
-(etusivu -> raportit -> listaa raportit). Raportteja ei ole mahdollista vielä luoda sovelluksen käyttöliittymän kautta. Raportteja voi kuitenkin luoda sovelluksessa luomalla uusia vuoroja, sillä kaikille sovellukseen lisätyille vuorolle luodaan automaagisesti vuoroon liittyvä raportti. Näiden raporttien ilmiintymistä pääsee niin halutessaanihastelemaan edellä mainitussa raporttilistausnäkymässä.
 
-Tietokantakuvauksen mukaisista tauluista on tehty ORM-toteutukset. Näitä ei vielä kaikin osin tosin ole otettu sovelluksessa käyttöön. Luodut toteutukset löytyvät vastuualueittain jaoteltuna omissa kansioissaan. Esimerkiksi, käyttäjää kuvaavan Accounts-toteutuksen voi kaivella ihmeteltäväksi navigoimalla repositoriossa -> application/auth/models.py
+Kaikista tietokantakuvauksen mukaisista tauluista on tehty ORM-toteutukset. Näitä ei vielä kaikin osin tosin ole otettu sovelluksessa käyttöön. Sovelluksessa ei ole vielä toiminnallisuutta luodun Pictures-luokan käyttöönotolle. Luodut toteutukset löytyvät vastuualueittain jaoteltuna omissa kansioissaan. Esimerkiksi, käyttäjää kuvaavan Accounts-toteutuksen voi kaivella ihmeteltäväksi navigoimalla repositoriossa -> application/auth/models.py
 
 ## Aihekuvaus
 
@@ -30,33 +33,33 @@ Sovellus auttaa pitämään kirjaa sekä organisoimaan taloyhtiön naapuripartio
 
 Taloyhtiön asukkaat jaetaan kahteen kastiin, taloyhtiön hallituksen jäseniin ja riviasukkaisiin. Hallituksen jäsenet voivat toimia sovelluksessa Suurmartan (ylläpitäjän) roolissa
 
-## Toiminnallisuudet
-
-- Käyttäjä voi luoda palveluun tunnuksen syöttämällä sähköpostiosoitteen ja salasanan sekä rekisteröitymisavaimen
-- Uuden käyttäjätunnuksen luominen vaatii olemassa olevalta suurmarttatilillä luodun rekisteröitymisavaimen syöttämistä
-- Käyttäjä voi kirjautua palveluun syöttämällä sähköpostiosoitteen ja salasanan
-- Käyttäjä voi lisätä itsestään profiilitietoja
-- Käyttäjä voi lähettää palveluun kuvan jota voi käyttää profiilikuvana
-- Vahtivuorolistan teko
-- Henkilökohtaisen vahtivuorolistan listaus
-- Vahtivuorolistan listaus
-
 ## Käyttäjäroolit
-
+### Kuvaus
 - Sovelluksessa on tavallisia käyttäjiä
 - Sovelluksessa on ylläpitäjän oikeudet omaavia suurmarttoja
-- Suurmartta voi luoda vahtivuoroja ja lisätä käyttäjiä vahtivuoroon
+- Suurmartta voi tulevaisuudessa luoda vahtivuoroja ja lisätä käyttäjiä vahtivuoroon
 
 ## Vahtivuorot&trade;
-
+### Kuvaus
 - Vahtivuoroon sisältyy aloitus- ja lopetuspvmäärät kellonaikoineen
-- Vahtivuoroon voi kuulua käyttäjiä
+- Vahtivuoroon voi tulevaisuudessa kuulua käyttäjiä
 - Vahtivuoroon voi kuulua korkeintaan yksi(1) raportti
 - Raporttiin voi kuulua havaintoja
-- Havaintoon voi kuulua yksi tai useampi kuva
-
+- Havaintoon voi tulevaisuudessa kuulua yksi tai useampi kuva
 - Vahtivuorosta on nähtävissä raportti (näkymä)
 - Raportit ovat kaikkien käyttäjien tarkasteltavissa
-- Vahtivuoroon liittyvää raporttia voivat muokata ainoastaan vuoroon liitetyt asukkaat sekä suurmartat
+
+---
+
+### Sovelluksen jatkokehityskohteet
+- CSRF-tokenit käyttöön ensitilassa
+- Sovellukseen rekisteröityminen vaatii erillisen rekisteröitymisavaimen
+- Rekisteröitymisavaimia voivat luoda suurmarttatilin haltijat
+- Käyttäjä voi lisätä ja päivittää itsestään profiilitietoja
+- Käyttäjä voi lähettää palveluun kuvia
+- Kuva voi liittyä joko tehtyyn havaintoon tai käyttäjän omiin profiilitietoihin
+- Vahtivuorolistan rajaaminen käyttäjittäin
+- Suurmartta voi nimetä ja lisätä käyttäjiä vahtivuoroon
+- Vahtivuoroon liittyvää raporttia voi muokata ainoastaan vuoroon liitetyt käyttäjät sekä suurmartat
 
 ---
